@@ -1,0 +1,31 @@
+                                             
+#Program to search for a key elemnet in an array
+
+echo "Enter the number of elements"
+read n
+i=0
+echo "Enter the numbers"
+while [ $i -lt $n ]
+do 
+   read a[$i]
+   i=$((i + 1))
+done
+echo "Enter the key number"
+read key
+k=0
+p=0
+while [ $k -lt $n ]
+do
+     if [ ${a[$k]} -eq  $key ]
+     then
+          p=$(($k + 1))
+          break
+     fi    
+     k=$((k + 1))
+done 
+if [ $p -ne 0 ]
+then 
+     echo "The key element $key got found and is at position $p"
+else
+     echo "The key element $key is not there within the array"
+fi     

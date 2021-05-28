@@ -1,0 +1,64 @@
+#Program to perform insertion and deletion of elements from an array.
+
+echo "Enter the size of the array"
+read size
+i=0
+echo "Enter the elements"
+while [ $i -lt $size ]
+do
+   read a[$i]
+   i=$((i+1))
+done   
+echo -e "\n OPERATIONS \n\n 1.INSERTION \n 2. DELETION \n\n Enter your choice(1/2) : "
+read c
+case $c in 
+  1) echo -e "\n INSERTION \n Enter the position where element is to be inserted : "
+     read pos
+     echo "Enter the element"
+     read key
+     i=$(($size - 1))
+     p=$(($pos - 1))
+     while [ $i -ge  $p ]
+     do
+       a[$(($i + 1))]=${a[$i]}
+       i=$(($i - 1))
+     done
+     a[$p]=$key
+     echo -e "\nArray after insertion : "
+     s=$(($size + 1))
+     echo ${a[@]:0:$s}
+     ;;
+  2) echo -e "\n DELETION \n Enter the element to be deleted : "
+     read e
+     k=0
+     pos=0
+     while [ $k -lt $size ]
+     do
+         if [ ${a[$k]} -eq  $e ]
+         then
+            #  p=$(($k + 1))
+              pos=1
+              break
+         fi    
+         k=$(($k + 1))
+     done 
+     if [ $pos -eq 1 ]
+     then
+          while [ $k -lt $(($size - 1)) ]
+          do 
+              a[$k]=${a[$(($k+1))]}
+              k=$(($k+1))
+          done
+          echo -e "\nArray after deletion : "
+          i=0
+          s=$(($size - 1))
+          echo ${a[@]:0:$s}
+     else
+          echo -e "\nThere is no such element in the array."
+     fi
+     ;;
+  *) echo "Invalid option"
+     ;;
+esac
+    
+                                    

@@ -1,0 +1,41 @@
+#Program to sort elements within an array
+
+function sort()
+  {
+      local arr=("$@")
+      i=0
+      length=${#arr[@]}   
+      while [ $i -lt $length ]
+      do 
+         j=0
+         while [ $j -lt $(($length - $i)) ]
+         do
+            if [[ ${arr[$j]} -gt ${arr[$(($j + 1))]} ]]   
+            then
+                  t=${arr[$j]}
+                  arr[$j]=${arr[$(($j + 1))]}
+                  arr[$(($j + 1))]=$t
+            fi
+            j=$(($j+1))
+         done
+         i=$(($i+1))
+      done      
+      echo -e "\nArray after sorting : "
+      echo ${arr[@]}
+  }
+
+
+echo "Enter the size of an array"
+read n
+echo "Enter the elements"
+i=0
+while [ $i -lt $n ]
+do 
+   read a[$i]
+   i=$(($i+1))
+done 
+sort "${a[@]}" 
+
+
+
+
